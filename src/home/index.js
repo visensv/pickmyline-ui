@@ -6,38 +6,41 @@ import facebook from "../images/facebook.svg"
 import twitter from "../images/twitter.svg"
 import instagram from "../images/instagram.svg"
 import linkedin from "../images/linkedin.svg"
+import {Loader} from "./loader.js";
 
 function PickMyLine() {
 
     const [prompt, setPrompt] = useState("");
     const [pickupLines, setPickupLines] = useState([]);
     const [gender, setGender] = useState("girls");
+    const [loading, setLoading] = useState(false);
     
 
     const generateText = async (prompt, gender) => {
-        const response = await fetch(`https://pml-service.onrender.com/api/generate?gender=${gender}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                prompt
-            }),
-        });
-        if (!response.ok) {
-            throw new Error('The data could not be fetched');
+        try {
+            const response = await fetch(`https://pml-service.onrender.com/api/generate?gender=${gender}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    prompt
+                }),
+            });
+            if (!response.ok) {
+                throw new Error('The data could not be fetched');
+            }
+
+            const data = await response.json();
+            let linesFetched = data.data.slice(1);
+            let formattedLines = linesFetched.split('\n');
+            setPickupLines(formattedLines.slice(1).filter((item) => item !== ""));
+            setLoading(false);
+            await saveDataToGoogleSheet();
         }
-        saveDataToGoogleSheet();
-        const data = await response.json();
-        let linesFetched = data.data.slice(1);
-        let formattedLines = linesFetched.split('\n');
-        // let formattedLines = [
-        //     "",
-        //     "1. \"If I could rearrange the alphabet, I'd put U and I together.\"",
-        //     "2. \"Are you from Korea? Because you're my Seoulmate!\""
-        // ]
-        // console.log("formattedLines - ", formattedLines.slice(1));
-        setPickupLines(formattedLines.slice(1).filter((item) => item !== ""));
+        catch(error){
+            console.log("Error occured - ", error);
+        }
     }
 
     const saveDataToGoogleSheet = async () => {
@@ -56,9 +59,10 @@ function PickMyLine() {
         setPrompt(value);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        generateText(prompt, gender);
+        setLoading(true);
+        await generateText(prompt, gender);
         setPrompt("");
     }
 
@@ -108,7 +112,7 @@ function PickMyLine() {
                                 onChange={inputChange}
                                 className="search-box"
                             />
-                            <button type="submit" className="search-button">
+                            <button type="submit" className={`search-button ${loading ? 'inactive': ''}`} disabled={loading}>
                                 Get your Line
                             </button>
                         </section>
@@ -125,6 +129,7 @@ function PickMyLine() {
                     handleNextClick={handleNextClick}
                     handlePrevClick={handlePrevClick}
                 />
+                <Loader showLoader={loading}/>
             </section>
             </section>
             

@@ -24,9 +24,7 @@ function List({pickupLines, handleNextClick, handlePrevClick}) {
                     )
                 }}
             >
-                {/* <div className={"list-container"}> */}
-                    {pickupLines.map((item) => <Card data={item.split('. ')[1]} />)}
-                {/* </div> */}
+                {pickupLines.map((item, index) => <Card data={item.split('. ')[1]} key={index}/>)}
             </Carousel> : null}
     </>
   )

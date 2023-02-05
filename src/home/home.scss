@@ -17,7 +17,7 @@ body {
 }
 
 .content {
-  background: url("../images/landingPage.svg");
+  background-image: url("../images/landingPage.svg");
   background-size: cover;
   background-repeat: no-repeat;
   padding-bottom: 100px;
@@ -27,15 +27,18 @@ body {
     .left-section {
       width: 20%;
       padding: 20px 20px;
+
       .logo {
         display: flex;
         flex-direction: column;
         gap: 5px;
         align-items: center;
+
         .logo-img {
           width: 55px;
           height: 55px;
         }
+
         .logo-text {
           font-family: "Nunito";
           font-style: normal;
@@ -48,21 +51,25 @@ body {
       }
     }
   }
+
   .center-heading {
     margin: 0 auto;
     text-align: center;
-    padding: 70px 0 55px 0;
-    width: 60%;
+    padding: 70px 20px 55px 20px;
+    max-width: 700px;
+
     .bold-heading {
       font-weight: 700;
       font-size: 56px;
       line-height: 65px;
       color: #000000;
       margin-bottom: 30px;
+
       .hightlight-text {
         color: #fe5387;
       }
     }
+
     .sub-heading {
       font-weight: 400;
       font-size: 16px;
@@ -71,8 +78,97 @@ body {
     }
   }
 
-  .main-content-container{
-    padding: 0px 40px;
+  .main-content-container {
+    padding: 0px 20px;
+
+    .loader {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .dot {
+      width: 24px;
+      height: 24px;
+      background: #3ac;
+      border-radius: 100%;
+      display: inline-block;
+      animation: slide 1s infinite;
+    }
+
+    .dot:nth-child(1) {
+      animation-delay: 0.1s;
+      background: #e5c8f0;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+      background: #f8b4f4;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.3s;
+      background: #faa6f5;
+    }
+
+    .dot:nth-child(4) {
+      animation-delay: 0.4s;
+      background: #f8b4f4;
+    }
+
+    .dot:nth-child(5) {
+      animation-delay: 0.5s;
+      background: #e5c8f0;
+    }
+
+    @-moz-keyframes slide {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.3;
+        transform: scale(2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    @-webkit-keyframes slide {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.3;
+        transform: scale(2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    @-o-keyframes slide {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.3;
+        transform: scale(2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    @keyframes slide {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.3;
+        transform: scale(2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
     .main-content {
       padding: 40px 40px;
       background: #ffffff;
@@ -80,12 +176,14 @@ body {
       max-width: 700px;
       margin: 0 auto;
       box-shadow: rgb(242 91 154 / 25%) 0 0 100px -20px,
-        rgb(238 230 233 / 27%) 0 0 60px -15px;
+      rgb(238 230 233 / 27%) 0 0 60px -15px;
+
       .search-container {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         gap: 15px;
+
         .search-box {
           height: 57px;
           background: rgba(254, 83, 135, 0.06);
@@ -100,6 +198,7 @@ body {
           padding: 10px 20px;
           border: none;
         }
+
         .search-button {
           height: 57px;
           flex: 1 1 100px;
@@ -114,7 +213,13 @@ body {
           border: none;
           cursor: pointer;
         }
+
+        .inactive {
+          background: grey;
+          pointer-events: none;
+        }
       }
+
       .gender-dropdown {
         width: 60%;
         margin: auto;
@@ -128,6 +233,7 @@ body {
         line-height: 22px;
         text-align: center;
         color: #575757;
+
         select {
           background: #ffffff;
           border: 1px solid #e6e6e6;
@@ -137,7 +243,7 @@ body {
       }
     }
   }
-  
+
 }
 
 .list-container {
@@ -151,6 +257,7 @@ body {
   line-height: 22px;
   text-align: center;
   color: #363636;
+
   .card-item {
     display: flex;
     gap: 10px;
@@ -159,6 +266,7 @@ body {
     border: 1px solid #f1f1f1;
     border-radius: 8px;
   }
+
   .copy-icon {
     display: flex;
     font-weight: 500;
@@ -181,16 +289,19 @@ footer {
   justify-content: center;
   align-items: center;
   text-align: center;
+
   .logo {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     align-items: center;
+
     .logo-img {
       width: 55px;
       height: 55px;
     }
+
     .logo-text {
       font-family: "Nunito";
       font-style: normal;
@@ -201,17 +312,20 @@ footer {
       color: #000000;
     }
   }
+
   .links {
     display: flex;
     gap: 20px;
     padding: 20px;
     line-height: 22px;
     color: #575757;
+
     a {
       text-decoration: none;
       color: #575757;
     }
   }
+
   .social-handles {
     display: flex;
     gap: 25px;
