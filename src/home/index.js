@@ -6,7 +6,7 @@ import facebook from "../images/facebook.svg"
 import twitter from "../images/twitter.svg"
 import instagram from "../images/instagram.svg"
 import linkedin from "../images/linkedin.svg"
-import {Loader} from "./loader.js";
+import { Loader } from "./loader.js";
 
 function PickMyLine() {
 
@@ -14,7 +14,7 @@ function PickMyLine() {
     const [pickupLines, setPickupLines] = useState([]);
     const [gender, setGender] = useState("girls");
     const [loading, setLoading] = useState(false);
-    
+
 
     const generateText = async (prompt, gender) => {
         try {
@@ -38,7 +38,7 @@ function PickMyLine() {
             setLoading(false);
             await saveDataToGoogleSheet();
         }
-        catch(error){
+        catch (error) {
             console.log("Error occured - ", error);
         }
     }
@@ -52,7 +52,7 @@ function PickMyLine() {
         });
     }
 
-    
+
 
     const inputChange = (event) => {
         const { value } = event.target;
@@ -95,44 +95,50 @@ function PickMyLine() {
                     Pick your favourite line to flat your <span className="hightlight-text">partner!</span>
                 </div>
                 <div className="sub-heading">
-                Not able to start conversation even after getting matched? Here is a ChatGPT powered pickup line generator for you!!
+                    Not able to start conversation even after getting matched? Here is a ChatGPT powered pickup line generator for you!!
                 </div>
             </section>
 
             <section className="main-content-container">
-            <section className="main-content">
-                <section>
-                    <form onSubmit={handleSubmit}>
-                        <section className="search-container">
-                            <input type="text"
-                                placeholder="Enter your text"
-                                required
-                                name="prompt"
-                                value={prompt}
-                                onChange={inputChange}
-                                className="search-box"
-                            />
-                            <button type="submit" className={`search-button ${loading ? 'inactive': ''}`} disabled={loading}>
-                                Get your Line
-                            </button>
-                        </section>
-                        <section className="gender-dropdown">
-                            <label htmlFor="gender">Select gender</label>
-                            <select name="gender" id="cars" onChange={handleGenderChange} value={gender}>
-                                <option value="girls">Lines For Girls</option>
-                                <option value="boys">Lines For Boys</option>
-                            </select>
-                        </section>
-                    </form>
+                <section className="main-content">
+                    <section>
+                        <form onSubmit={handleSubmit} className="container">
+                            <section className="search-container">
+                                <div className="pickupline-text">Pickup line for : </div>
+                                <input
+                                    type="text"
+                                    placeholder={"handsome/cute/brown"}
+                                    required
+                                    name="prompt"
+                                    value={prompt}
+                                    onChange={inputChange}
+                                    className="search-box"
+                                />
+                                <section className="gender-dropdown">
+                                    {/* <label htmlFor="gender">Select gender</label> */}
+                                    <select name="gender" id="cars" onChange={handleGenderChange} value={gender}>
+                                        <option value="girls">Girls</option>
+                                        <option value="boys">Guys</option>
+                                    </select>
+                                </section>
+
+                            </section>
+                            <section className="getyourline-button">
+                                <button type="submit" className={`search-button ${loading ? 'inactive' : ''}`} disabled={loading}>
+                                    Get your Line
+                                </button>
+                            </section>
+
+                        </form>
+                    </section>
+                    <List pickupLines={pickupLines}
+                        handleNextClick={handleNextClick}
+                        handlePrevClick={handlePrevClick}
+                    />
+                    <Loader showLoader={loading} />
                 </section>
-                <List pickupLines={pickupLines}
-                    handleNextClick={handleNextClick}
-                    handlePrevClick={handlePrevClick}
-                />
-                <Loader showLoader={loading}/>
             </section>
-            </section>
-            
+
         </div>
         <footer>
             <section className="footer-logo">
@@ -144,10 +150,10 @@ function PickMyLine() {
                 <div><a href="https://forms.gle/zujJufCBbWvVVofS6" target="_blank" rel="noreferrer">Contact Us</a></div>
             </section>
             <section className="social-handles">
-                <img src={facebook} alt="facebook_icon" onClick={saveDataToGoogleSheet}/>
-                <img src={twitter} alt="twitter_icon" onClick={saveDataToGoogleSheet}/>
-                <img src={instagram} alt="instagram" onClick={saveDataToGoogleSheet}/>
-                <img src={linkedin} alt="linkedin" onClick={saveDataToGoogleSheet}/>
+                <img src={facebook} alt="facebook_icon" onClick={saveDataToGoogleSheet} />
+                <img src={twitter} alt="twitter_icon" onClick={saveDataToGoogleSheet} />
+                <img src={instagram} alt="instagram" onClick={saveDataToGoogleSheet} />
+                <img src={linkedin} alt="linkedin" onClick={saveDataToGoogleSheet} />
             </section>
             <section className="links">
                 <div>Designed with love by <a href="https://destlab.in/" target="_blank" rel="noreferrer" >DestLab</a></div>

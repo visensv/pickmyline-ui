@@ -172,78 +172,89 @@ body {
     .main-content {
       padding: 40px 40px;
       background: #ffffff;
-      border-radius: 12px;
+      border-radius: 14px;
       max-width: 700px;
       margin: 0 auto;
       box-shadow: rgb(242 91 154 / 25%) 0 0 100px -20px,
-      rgb(238 230 233 / 27%) 0 0 60px -15px;
+        rgb(238 230 233 / 27%) 0 0 60px -15px;
 
-      .search-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-
-        .search-box {
-          height: 57px;
-          background: rgba(254, 83, 135, 0.06);
-          border-radius: 8px;
-          flex: 3 1 300px;
-          font-family: "Space Grotesk";
-          font-style: normal;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 20px;
-          color: #969696;
-          padding: 10px 20px;
-          border: none;
-        }
-
-        .search-button {
-          height: 57px;
-          flex: 1 1 100px;
-          background: #fe5387;
-          border-radius: 8px;
-          font-family: "Space Grotesk";
-          font-weight: 500;
-          font-size: 16px;
-          line-height: 20px;
-          text-align: center;
-          color: #ffffff;
-          border: none;
-          cursor: pointer;
-        }
-
-        .inactive {
-          background: grey;
-          pointer-events: none;
-        }
-      }
-
-      .gender-dropdown {
-        width: 60%;
-        margin: auto;
-        padding: 35px 0px 5px 0px;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        justify-content: center;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 22px;
-        text-align: center;
-        color: #575757;
-
-        select {
-          background: #ffffff;
-          border: 1px solid #e6e6e6;
-          border-radius: 8px;
-          padding: 10px 15px;
-        }
-      }
+        
+          // display: flex;
+          // flex-direction: column;
+          // gap: 10px;
+          .search-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+    
+            .pickupline-text {
+              font-family: "Space Grotesk";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 16px;
+              color: #969696;
+            }
+    
+            .search-box {
+              height: 50px;
+              background: rgba(254, 83, 135, 0.06);
+              border-radius: 8px;
+              flex: 3 1 300px;
+              font-family: "Space Grotesk";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 20px;
+              color: #969696;
+              padding: 10px 20px;
+              border: none;
+            }
+    
+            .inactive {
+              background: grey;
+              pointer-events: none;
+            }
+          }
+    
+          .gender-dropdown {
+            select {
+              height: 50px;
+              background: #ffffff;
+              border: 1px solid #e6e6e6;
+              border-radius: 15px;
+              padding: 10px 15px;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 22px;
+              text-align: center;
+              color: #575757;
+            }
+          }
+    
+          .getyourline-button{
+            display: flex;
+    justify-content: center;
+    margin-top: 20px;
+            .search-button {
+              height: 50px;
+              background: #fe5387;
+              border-radius: 15px;
+              font-family: "Space Grotesk";
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 20px;
+              text-align: center;
+              color: #ffffff;
+              border: none;
+              cursor: pointer;
+              min-width: 160px;
+            }
+          }
+      
     }
   }
-
 }
 
 .list-container {
@@ -279,6 +290,29 @@ body {
     min-width: 85px;
     margin: auto;
     justify-content: flex-end;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 50px;
+    background-color: #fe5387;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -30px;
+    left: 22%;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
   }
 }
 
