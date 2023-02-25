@@ -63,7 +63,6 @@ function PickMyLine() {
         event.preventDefault();
         setLoading(true);
         await generateText(prompt, gender);
-        setPrompt("");
     }
 
     const handleNextClick = (activePage, totalPages, clickAction) => {
