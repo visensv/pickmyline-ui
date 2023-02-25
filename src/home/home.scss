@@ -177,11 +177,6 @@ body {
       margin: 0 auto;
       box-shadow: rgb(242 91 154 / 25%) 0 0 100px -20px,
         rgb(238 230 233 / 27%) 0 0 60px -15px;
-
-        
-          // display: flex;
-          // flex-direction: column;
-          // gap: 10px;
           .search-container {
             display: flex;
             justify-content: center;
@@ -373,5 +368,22 @@ footer {
         width: 100%;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .list-container{
+    .card-item{
+      flex-wrap: wrap;
+    }
+  }
+  .gender-dropdown{
+    width: 100%;
+    select {
+      width: 100%;
+    }
+  }
+  .search-button{
+    width: 100%;
   }
 }
